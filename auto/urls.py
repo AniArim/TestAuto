@@ -7,12 +7,13 @@ router = routers.DefaultRouter()
 router.register(r'brand', BrandViewSet)
 router.register(r'color', ColorViewSet)
 router.register(r'model', ModelViewSet)
+router.register(r'order', OrderViewSet, basename='order')
+router.register(r'order_create_up_del', OrderCreateUpdateDeleteViewSet, basename='order_create_up_del')
 
+'''
+API for brand filter http://127.0.0.1:8000/api/auto/order/?model=&counter_gt=&counter_lt=&brand=9&color=
+'''
 
 urlpatterns = [
-	# path('auto/brand/', BrandViewSet.as_view({'get': 'list'})),
-	# path('auto/brand/detail/<int:pk>', BrandViewSet.as_view({
-	#	'put': 'update', 'delete': 'destroy', 'get': 'retrieve'})),
-	# path('auto/brand/create/', BrandViewSet.as_view({'post': 'create'})),
 	path('auto/', include(router.urls)),  # http://127.0.0.1:8000/api/auto/
 ]

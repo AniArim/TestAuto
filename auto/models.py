@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from django.db import models
 from django.utils import timezone
 
@@ -26,14 +26,16 @@ class Model(models.Model):
 
 
 class Order(models.Model):
-	number = models.PositiveIntegerField(verbose_name='Номер заказа')
-	color = models.ForeignKey('Color', on_delete=models.PROTECT, verbose_name='Цвет')
+
+	number = models.PositiveIntegerField(verbose_name='Номер заказа', unique=True)
+	color = models.ForeignKey('Color', on_delete=models.PROTECT, verbose_name='Цвет авто')
 	model = models.ForeignKey('Model', on_delete=models.PROTECT, verbose_name='Модель')
 	counter = models.PositiveIntegerField(verbose_name='Количество')
-	date = models.DateField(default=timezone.now, verbose_name='Дата заказа')
+	date = models.DateField(default=date.today(), verbose_name='Дата заказа')
 
 	def __str__(self):
-		return self.number
+		return str(self.pk)
+
 
 
 
