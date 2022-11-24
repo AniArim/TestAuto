@@ -30,7 +30,7 @@ class Order(models.Model):
 	color = models.ForeignKey('Color', on_delete=models.PROTECT, verbose_name='Цвет авто', related_name='colors')
 	model = models.ForeignKey('Model', on_delete=models.PROTECT, verbose_name='Модель', related_name='models')
 	counter = models.PositiveIntegerField(verbose_name='Количество')
-	date = models.DateField(default=date.today(), verbose_name='Дата заказа')
+	date = models.DateField(default=date.today, verbose_name='Дата заказа')
 
 	def __str__(self):
 		return str(self.pk)
