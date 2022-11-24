@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  db_auto:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  web:
+    container_name: API-autotest_task
+    build: .
+    command: >
+      sh -c 'python /usr/src/TestAuto/manage.py migrate &&
+      python /usr/src/TestAuto/manage.py loaddata db.json &&
+      python /usr/src/TestAuto/manage.py runserver 0.0.0.0:8000'
+
+    volumes:
+      - .:/usr/src/TestAuto
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db_auto
+    links:
+      - db_auto
+volumes:
+  postgres_data: { }
+
