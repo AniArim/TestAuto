@@ -13,7 +13,8 @@ router.register(r'get_sum_of_cars_for_color', ColorFilterViewSet, basename='get_
 router.register(r'get_sum_of_cars_for_model', ModelFilterViewSet, basename='get_sum_of_cars_for_model')
 
 '''
-API for brand filter http://127.0.0.1:8000/api/auto/order/?model=&counter_gt=&counter_lt=&brand=9&color=
+Фильтрация списка заказов по марке авто:
+ http://127.0.0.1:8000/api/auto/order/?model=&counter_gt=&counter_lt=&brand=9&color=
 '''
 
 urlpatterns = [
