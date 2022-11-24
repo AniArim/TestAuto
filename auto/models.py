@@ -19,7 +19,7 @@ class Brand(models.Model):
 
 class Model(models.Model):
 	title = models.CharField(max_length=120, verbose_name='Модель автомобиля', unique=True)
-	brand = models.ForeignKey('Brand', on_delete=models.PROTECT, verbose_name='Марка')
+	brand = models.ForeignKey('Brand', on_delete=models.PROTECT, verbose_name='Марка', related_name='brands')
 
 	def __str__(self):
 		return self.title
@@ -27,9 +27,8 @@ class Model(models.Model):
 
 class Order(models.Model):
 
-	number = models.PositiveIntegerField(verbose_name='Номер заказа', unique=True)
-	color = models.ForeignKey('Color', on_delete=models.PROTECT, verbose_name='Цвет авто')
-	model = models.ForeignKey('Model', on_delete=models.PROTECT, verbose_name='Модель')
+	color = models.ForeignKey('Color', on_delete=models.PROTECT, verbose_name='Цвет авто', related_name='colors')
+	model = models.ForeignKey('Model', on_delete=models.PROTECT, verbose_name='Модель', related_name='models')
 	counter = models.PositiveIntegerField(verbose_name='Количество')
 	date = models.DateField(default=date.today(), verbose_name='Дата заказа')
 
