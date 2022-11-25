@@ -1,6 +1,7 @@
 version: "3.7"
 
 services:
+
   db_auto:
     image: postgres:13
     ports:
@@ -9,6 +10,7 @@ services:
       POSTGRES_PASSWORD: 123456
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
   web:
     container_name: API-autotest_task
     build: .
@@ -25,6 +27,7 @@ services:
       - db_auto
     links:
       - db_auto
+
 volumes:
   postgres_data: { }
 
