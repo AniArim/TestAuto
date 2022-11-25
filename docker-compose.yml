@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
 
-  db_auto:
+  db_testtask:
     image: postgres:13
     ports:
       - "5432:5432"
@@ -24,9 +24,9 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db_auto
+      - db_testtask
     links:
-      - db_auto
+      - db_testtask
 
 volumes:
   postgres_data: { }

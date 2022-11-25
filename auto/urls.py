@@ -7,7 +7,6 @@ from rest_framework import routers
 from django.conf.urls import url
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from rest_framework import permissions
 
 
 router = routers.DefaultRouter()
@@ -24,18 +23,13 @@ schema_view = get_schema_view(
 	openapi.Info(
 		title='API для тестового задания',
 		default_version='0.0.1',
-		description='Some description',
+		description=' ',
 		contact=openapi.Contact(email='ekb.iab@yandex.ru', name='Admin')
 	),
 	patterns=[path('api/', include('auto.urls')), ],
 	public=True,
 )
 
-
-'''
-Фильтрация списка заказов по марке авто:
- http://127.0.0.1:8000/api/auto/order/?model=&counter_gt=&counter_lt=&brand=9&color=
-'''
 
 urlpatterns = [
 	path(
@@ -53,3 +47,8 @@ urlpatterns = [
 	path('auto/', include(router.urls)),  # http://127.0.0.1:8000/api/auto/
 
 ]
+
+'''
+Фильтрация списка заказов по марке авто:
+ http://127.0.0.1:8000/api/auto/order/?model=&counter_gt=&counter_lt=&brand=9&color=
+'''
